@@ -3,6 +3,17 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: 'http://localhost:4200'
+            allowedHeaders:
+              - Content-Type
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
       discovery:
         locator:
           enabled: true
@@ -11,6 +22,10 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/v*/auth*,/api/v*/auth/*
+        - id: time-report-service
+          uri: lb://time-report-service
+          predicates:
+            - Path=/api/v*/reports*,/api/v*/reports/*,/api/v*/time-entries*,/api/v*/time-entries/*
 management:
   endpoint.gateway.enabled: true
   endpoints.web.exposure.include: gateway

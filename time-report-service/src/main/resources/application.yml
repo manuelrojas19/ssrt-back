@@ -1,9 +1,9 @@
 spring:
   application:
-    name: film-service
+    name: time-report-service
   data:
     mongodb:
-      database: cms_film_service_db
+      database: time-report-service
       port: 27017
       auto-index-creation: true
 server:
@@ -11,4 +11,10 @@ server:
 authentication:
   tokenSecret: myTokenSecret
   tokenExpirationMsec: 3600000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
 

@@ -1,6 +1,8 @@
 package com.ipn.upiicsa.proy.sstr.userservice.controller;
 
 import com.ipn.upiicsa.proy.sstr.userservice.dto.LoginRequestDto;
+import com.ipn.upiicsa.proy.sstr.userservice.dto.LoginResponseDto;
+import com.ipn.upiicsa.proy.sstr.userservice.dto.UserDto;
 import com.ipn.upiicsa.proy.sstr.userservice.service.AuthService;
 import com.ipn.upiicsa.proy.sstr.userservice.dto.StudentDto;
 import lombok.extern.slf4j.Slf4j;
@@ -21,21 +23,23 @@ public class AuthController {
 
     /**
      * Endpoint que realiza el login de un usuario en el sistema
+     *
      * @param request Objeto con las credenciales del usuario.
      * @return ResponseEntity con el status de la solicitud.
      */
-    @PostMapping("login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginRequestDto request) {
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginRequestDto request) {
         return ResponseEntity.ok(authService.login(request));
     }
 
     /**
      * Endpoint que permite a un usuario registrarse en la aplicación de servicio social.
+     *
      * @param user datos del usuario a registrarse.
      * @return ResponseEntity con el status de la solicitud.
      */
     @PostMapping("/signup")
-    public ResponseEntity<?> subscriberSignup(@Valid @RequestBody StudentDto user) {
+    public ResponseEntity<UserDto> subscriberSignup(@Valid @RequestBody StudentDto user) {
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.signup(user));
     }
 
