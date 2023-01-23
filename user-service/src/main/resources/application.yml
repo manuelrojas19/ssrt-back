@@ -1,0 +1,29 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: user-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/servicio-social-reportes-db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: postgresql
+    generate-ddl: true
+    open-in-view: false
+  jackson:
+    default-property-inclusion: non_null
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+authentication:
+    tokenSecret: myTokenSecret
+    tokenExpirationMsec: 3600000

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: film-service
+  data:
+    mongodb:
+      database: cms_film_service_db
+      port: 27017
+      auto-index-creation: true
+server:
+  port: 8201
+authentication:
+  tokenSecret: myTokenSecret
+  tokenExpirationMsec: 3600000
+

@@ -1,0 +1,23 @@
+# docker-compose.yml
+version: '3.1'
+services:
+  postgresql:
+    image: postgres:latest
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: servicio-social-reportes-db
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+volumes:
+  postgresql-data:
+  mongodb_data:
