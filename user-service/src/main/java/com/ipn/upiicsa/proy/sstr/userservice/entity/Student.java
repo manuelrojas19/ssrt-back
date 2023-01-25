@@ -1,10 +1,8 @@
 package com.ipn.upiicsa.proy.sstr.userservice.entity;
 
 import com.ipn.upiicsa.proy.sstr.userservice.enums.Roles;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -22,17 +20,15 @@ import java.util.Collections;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@SuperBuilder
 @Entity
 public class Student extends User {
 
     @NotBlank
-    @Size(max = 40)
     @Column(columnDefinition = "TEXT", nullable = false)
     private String academicProgram;
 
-    @Max(14)
-    @PositiveOrZero
-    private Integer semester;
+    private String semester;
 
     @Embedded
     private SocialService socialService;

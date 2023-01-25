@@ -1,11 +1,13 @@
 package com.ipn.upiicsa.proy.sstr.timereportservice.service.impl;
 
 import com.ipn.upiicsa.proy.sstr.timereportservice.dto.CreateReportRequest;
+import com.ipn.upiicsa.proy.sstr.timereportservice.dto.FindAllReportsResponse;
 import com.ipn.upiicsa.proy.sstr.timereportservice.entity.Report;
 import com.ipn.upiicsa.proy.sstr.timereportservice.repository.ReportRepository;
 import com.ipn.upiicsa.proy.sstr.timereportservice.service.ReportService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.bson.types.ObjectId;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -47,9 +49,18 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public List<Report> findAllByOwner() {
+    public FindAllReportsResponse findAllByOwner() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         if (Objects.isNull(username)) throw new IllegalStateException("User must be authenticated");
-        return reportRepository.findAllByOwner(username);
+        return FindAllReportsResponse.builder()
+                .reports(reportRepository.findAllByOwner(username))
+                .build();
+    }
+
+    @Override
+    public Report findById(ObjectId id) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        if (Objects.isNull(username)) throw new IllegalStateException("User must be authenticated");
+        return reportRepository.findById(id).orElseThrow(() -> new RuntimeException("Report was not found"));
     }
 }

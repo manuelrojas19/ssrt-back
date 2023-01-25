@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LoginResponseDto {
-    private String status;
-    private String message;
-    private String token;
+public class ValidateSignInResponse {
+    private Boolean authenticated;
     private String user;
+    private String jwt;
 }

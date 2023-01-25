@@ -1,13 +1,13 @@
 package com.ipn.upiicsa.proy.sstr.userservice.service;
 
-import com.ipn.upiicsa.proy.sstr.userservice.dto.LoginRequestDto;
-import com.ipn.upiicsa.proy.sstr.userservice.dto.LoginResponseDto;
-import com.ipn.upiicsa.proy.sstr.userservice.dto.UserDto;
+import com.ipn.upiicsa.proy.sstr.userservice.dto.*;
 
 public interface AuthService {
 
-    UserDto signup(UserDto user);
+    UserDto signup(CreateUserRequestDto request);
 
     LoginResponseDto login(LoginRequestDto LoginRequestDto);
+
+    ValidateSignInResponse validateSignIn();
 
 }

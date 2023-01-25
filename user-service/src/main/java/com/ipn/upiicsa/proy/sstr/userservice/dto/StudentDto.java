@@ -20,9 +20,7 @@ public class StudentDto extends UserDto {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String academicProgram;
 
-    @Max(14)
-    @PositiveOrZero
-    private Integer semester;
+    private String semester;
 
     private SocialServiceDto socialService;
 }

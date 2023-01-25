@@ -22,6 +22,7 @@ import java.util.Objects;
 
 @Slf4j
 public class AuthFilter extends OncePerRequestFilter {
+
     private static final String AUTH_HEADER_NAME = "Authorization";
 
     @Autowired

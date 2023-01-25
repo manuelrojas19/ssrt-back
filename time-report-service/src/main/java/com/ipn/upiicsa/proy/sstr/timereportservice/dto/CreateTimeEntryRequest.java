@@ -24,11 +24,11 @@ public class CreateTimeEntryRequest {
     private LocalDate date;
 
     @NotNull
-    @JsonFormat(pattern = "HH:mm:ss")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "HH:mm")
     private LocalTime entryTime;
 
     @NotNull
-    @JsonFormat(pattern = "HH:mm:ss")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "HH:mm")
     private LocalTime exitTime;
 
     @NotNull
